@@ -1,0 +1,126 @@
+function puzzle() {
+        var main = document.getElementById('experiment');
+        var mainBlockHTML = document.createElement('div');
+        main.appendChild(mainBlockHTML);
+        mainBlockHTML.className = "container";
+             var   i=1;
+            while (i<= 8) { 
+                var cell = document.createElement('div');
+                mainBlockHTML.appendChild(cell);
+                cell.className = "col-md-6 col-xs-12";
+                cell.style.display = "inline-block";
+                cell.style.width = "525px";
+                cell.style.height = "525px";
+                cell.id = i;
+                i++;
+            }
+        const cellsAll = ['1','2','3','4','5','6','7','8']
+        console.log(cellsAll[Math.floor(Math.random() * cellsAll.length)]);
+        //
+
+        const array = ['1','3','5','7']
+        var numberId = array[Math.floor(Math.random() * array.length)];
+        var cellTwoOne = document.getElementById(numberId);
+        console.log(numberId);
+        console.log(array.indexOf(numberId));
+        var cellTwoOneImage = document.createElement('img');
+
+        var cellTwoOneImages = new Array(4);
+            for(var i=0;i<4;i++){ 
+                cellTwoOneImages[i] = new Image(); 
+                cellTwoOneImages[i].src = 'img/twoOne/' + i + '.jpg'; }
+
+                const TwoOneImage = cellTwoOneImages[Math.floor(Math.random() * array.length)];
+            console.log(TwoOneImage);
+            cellTwoOne.appendChild(TwoOneImage);
+            TwoOneImage.style.width = "200%";
+                //
+        const evenOneTwoArray = ['1','3','5']
+        evenOneTwoArray.splice(array.indexOf(numberId),1);
+        console.log(evenOneTwoArray)
+        const evenOneTwoNumberID = evenOneTwoArray[Math.floor(Math.random() * array.length)];
+        console.log(evenOneTwoNumberID); 
+         var cellOneTwo = document.getElementById(evenOneTwoNumberID);
+            var cellOneTwoImage = document.createElement('img');
+            var cellOneTwoImages = new Array(4);
+                for(var i=0;i<4;i++){ 
+                    cellOneTwoImages[i] = new Image(); 
+                    cellOneTwoImages[i].src = 'img/oneTwo/' + i + '.jpg'; }
+                const oneTwoImage = cellOneTwoImages[Math.floor(Math.random() * array.length)];
+            console.log(oneTwoImage);
+            cellOneTwo.appendChild(oneTwoImage);
+            oneTwoImage.style.width = "100%";
+
+            const oddOneTwoArray = ['2','4','6'];
+            oddOneTwoArray.splice(array.indexOf(numberId),1);
+            console.log(oddOneTwoArray)
+            const oddOneTwoNumberID = oddOneTwoArray[Math.floor(Math.random() * array.length)];
+            console.log(oddOneTwoNumberID);         
+            cellOneTwoOdd = document.getElementById(oddOneTwoNumberID);
+            var cellOneTwoImage = document.createElement('img');
+            var cellOneTwoOddImages = new Array(4);
+                for(var i=1;i<=5;i++){ 
+                    cellOneTwoOddImages[i] = new Image(); 
+                    cellOneTwoOddImages[i].src = 'img/oneTwo/' + i + '.jpg'; }
+                const oneTwoOddImage = cellOneTwoOddImages[Math.floor(Math.random() * array.length)];
+            console.log(oneTwoOddImage);
+            cellOneTwoOdd.appendChild(oneTwoOddImage);
+            oneTwoOddImage.style.width = "100%";
+
+            cellsAll.splice(array.indexOf(numberId),1);
+            cellsAll.splice(array.indexOf(numberId+1),1);
+            cellsAll.splice(evenOneTwoArray.indexOf(evenOneTwoNumberID),1);
+            cellsAll.splice(evenOneTwoArray.indexOf((Number(evenOneTwoNumberID)+2).toString),1);
+            cellsAll.splice(oddOneTwoArray.indexOf(oddOneTwoNumberID),1);
+            cellsAll.splice(oddOneTwoArray.indexOf((Number(oddOneTwoNumberID)+2).toString),1);
+
+            const oneNumberID = cellsAll[Math.floor(Math.random() * array.length)];
+            var cellOne = document.getElementById(oneNumberID);
+            console.log(oneNumberID);
+            var cellOneImage = document.createElement('img');
+            var cellOneImages = new Array(4);
+                for(var i=1;i<=5;i++){ 
+                    cellOneImages[i] = new Image(); 
+                    cellOneImages[i].src = 'img/one/' + i + '.jpg'; }
+                const oneImage = cellOneImages[Math.floor(Math.random() * array.length)];
+            console.log(oneImage);
+            cellOne.appendChild(oneImage);
+            oneImage.style.width = "100%";
+            cellsAll.splice(cellsAll.indexOf(oneNumberID),1);
+            oneNumberID = cellsAll;
+            cellOneImage = document.createElement('img');
+            oneImage = cellOneImages[Math.floor(Math.random() * array.length)];
+
+            cellOne.appendChild(oneImage);
+            oneImage.style.width = "100%";
+
+
+
+
+
+
+            console.log(cellsAll);
+
+} 
+
+puzzle();
+
+
+        // Making Array for one
+        let oneArray = [];
+        for (i = 1; i <= blockSum; i++) {
+            oneArray.push(i.toString());
+        }
+        console.log(oneArray);
+        delete oneArray[Number(twoOneRand)];
+        delete oneArray[Number(twoOneRand) - 1];
+        delete oneArray[Number(twoOneSecondRand)];
+        delete oneArray[Number(twoOneSecondRand) - 1];
+        delete oneArray[Number(oneTwoRand) - 1];
+        delete oneArray[((Number(oneTwoRand)  -1) + rowLenght)];
+        delete oneArray[Number(oneTwoSecondRand) - 1];
+        delete oneArray[((Number(oneTwoSecondRand)  -1) + rowLenght)];
+        console.log(oneArray);
+        oneLastStand = oneArray.filter(function(item) {
+            return item !== undefined;
+        });
